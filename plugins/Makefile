@@ -667,6 +667,16 @@ PLUGIN_FILES += $(filter-out cf/src/plugin.cpp,$(wildcard cf/src/*.cpp))
 CF_CUSTOM = $(DRWAV)
 
 # --------------------------------------------------------------
+# CountModula
+
+PLUGIN_FILES += $(wildcard CountModula/src/*.cpp)
+PLUGIN_FILES += $(wildcard CountModula/src/modules/*.cpp)
+PLUGIN_FILES += $(wildcard CountModula/src/lib/*.cpp)
+PLUGIN_FILES += $(wildcard CountModula/src/components/*.cpp)
+PLUGIN_FILES += $(wildcard CountModula/src/dev/*.cpp)
+
+COUNTMODULA_CUSTOM = Comparator Mixer Fade BusRoute Arpeggiator Mult
+# --------------------------------------------------------------
 # dBiz
 
 PLUGIN_FILES += $(filter-out dBiz/src/plugin.cpp,$(wildcard dBiz/src/*.cpp))
@@ -2362,6 +2372,13 @@ $(BUILD_DIR)/ChowDSP/%.cpp.o: ChowDSP/%.cpp
 		-IChowDSP/lib \
 		-IChowDSP/lib/chowdsp_utils/modules/chowdsp_dsp/WDF \
 		-Wno-deprecated-copy
+
+$(BUILD_DIR)/CountModula/%.cpp.o: CountModula/%.cpp
+	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
+	@echo "Compiling $<"
+	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
+		$(foreach m,$(COUNTMODULA_CUSTOM),$(call custom_module_names,$(m),CountModula)) \
+		-DpluginInstance=pluginInstance__CountModula
 
 $(BUILD_DIR)/dBiz/src/%.cpp.o: dBiz/src/%.cpp
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"

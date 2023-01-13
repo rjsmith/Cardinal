@@ -316,6 +316,154 @@ extern Model* modelTestVCF;
 #include "ChowDSP/src/plugin.cpp"
 #undef init
 
+// CountModula
+/* NOTE too much noise in original include, do this a different way
+// #include "CountModula/src/CountModula.hpp"
+*/
+#define modelArpeggiator modelCountModulaArpeggiator
+#define modelBusRoute modelCountModulaBusRoute
+#define modelComparator modelCountModulaComparator
+#define modelFade modelCountModulaFade
+#define modelMixer modelCountModulaMixer
+#define modelMult modelCountModulaMult
+extern Model *modelAnalogueShiftRegister;
+extern Model *modelArpeggiator;
+extern Model *modelAttenuator;
+extern Model *modelAttenuverter;
+extern Model *modelBarGraph;
+extern Model *modelBasicSequencer8;
+extern Model *modelBinaryComparator;
+extern Model *modelBinarySequencer;
+extern Model *modelBlank12HP;
+extern Model *modelBlank16HP;
+extern Model *modelBlank20HP;
+extern Model *modelBlank24HP;
+extern Model *modelBlank2HP;
+extern Model *modelBlank4HP;
+extern Model *modelBlank8HP;
+extern Model *modelBooleanAND;
+extern Model *modelBooleanOR;
+extern Model *modelBooleanVCNOT;
+extern Model *modelBooleanXOR;
+extern Model *modelBreakout;
+extern Model *modelBurstGenerator;
+extern Model *modelBusRoute;
+extern Model *modelBusRoute2;
+extern Model *modelCarousel;
+extern Model *modelChances;
+extern Model *modelClockDivider;
+extern Model *modelClockedRandomGateExpanderCV;
+extern Model *modelClockedRandomGateExpanderLog;
+extern Model *modelClockedRandomGates;
+extern Model *modelComparator;
+extern Model *modelCVSpreader;
+extern Model *modelEuclid;
+extern Model *modelEuclidExpanderCV;
+extern Model *modelEventArranger;
+extern Model *modelEventTimer;
+extern Model *modelEventTimer2;
+extern Model *modelFade;
+extern Model *modelFadeExpander;
+extern Model *modelG2T;
+extern Model *modelGatedComparator;
+extern Model *modelGateDelay;
+extern Model *modelGateDelayMT;
+extern Model *modelGateModifier;
+extern Model *modelGateSequencer16;
+extern Model *modelGateSequencer8;
+extern Model *modelHyperManiacalLFO;
+extern Model *modelHyperManiacalLFOExpander;
+extern Model *modelLightStrip;
+extern Model *modelMangler;
+extern Model *modelManifold;
+extern Model *modelManualCV;
+extern Model *modelManualCV2;
+extern Model *modelManualGate;
+extern Model *modelMasterReset;
+extern Model *modelMatrixCombiner;
+extern Model *modelMatrixMixer;
+extern Model *modelMegalomaniac;
+extern Model *modelMinimusMaximus;
+extern Model *modelMixer;
+extern Model *modelMorphShaper;
+extern Model *modelMult;
+extern Model *modelMultiplexer;
+extern Model *modelMultiStepSequencer;
+extern Model *modelMute;
+extern Model *modelMuteIple;
+extern Model *modelNibbleTriggerSequencer;
+extern Model *modelOctetTriggerSequencer;
+extern Model *modelOctetTriggerSequencerCVExpander;
+extern Model *modelOctetTriggerSequencerGateExpander;
+extern Model *modelOffsetGenerator;
+extern Model *modelOscilloscope;
+extern Model *modelPalette;
+extern Model *modelPolyChances;
+extern Model *modelPolyG2T;
+extern Model *modelPolyGateModifier;
+extern Model *modelPolyLogic;
+extern Model *modelPolyMinMax;
+extern Model *modelPolyMute;
+extern Model *modelPolyrhythmicGenerator;
+extern Model *modelPolyrhythmicGeneratorMkII;
+extern Model *modelPolyVCPolarizer;
+extern Model *modelPolyVCSwitch;
+extern Model *modelRackEarLeft;
+extern Model *modelRackEarRight;
+extern Model *modelRandomAccessSwitch18;
+extern Model *modelRandomAccessSwitch81;
+extern Model *modelRectifier;
+extern Model *modelSampleAndHold;
+extern Model *modelSampleAndHold2;
+extern Model *modelSequenceEncoder;
+extern Model *modelSequencer16;
+extern Model *modelSequencer64;
+extern Model *modelSequencer8;
+extern Model *modelSequencerChannel16;
+extern Model *modelSequencerChannel8;
+extern Model *modelSequencerExpanderCV8;
+extern Model *modelSequencerExpanderLog8;
+extern Model *modelSequencerExpanderOut8;
+extern Model *modelSequencerExpanderRM8;
+extern Model *modelSequencerExpanderTrig8;
+extern Model *modelSequencerExpanderTSG;
+extern Model *modelSequencerGates16;
+extern Model *modelSequencerGates8;
+extern Model *modelSequencerTriggers16;
+extern Model *modelSequencerTriggers8;
+extern Model *modelShepardGenerator;
+extern Model *modelSingleDFlipFlop;
+extern Model *modelSingleSRFlipFlop;
+extern Model *modelSingleTFlipFlop;
+extern Model *modelSlopeDetector;
+extern Model *modelSRFlipFlop;
+extern Model *modelStartupDelay;
+extern Model *modelStepSequencer8;
+extern Model *modelSubHarmonicGenerator;
+extern Model *modelSwitch16To1;
+extern Model *modelSwitch1To16;
+extern Model *modelSwitch1To8;
+extern Model *modelSwitch2;
+extern Model *modelSwitch3;
+extern Model *modelSwitch4;
+extern Model *modelSwitch8To1;
+extern Model *modelTFlipFlop;
+extern Model *modelTriggerSequencer16;
+extern Model *modelTriggerSequencer8;
+extern Model *modelVCFrequencyDivider;
+extern Model *modelVCFrequencyDividerMkII;
+extern Model *modelVCPolarizer;
+extern Model *modelVCPulseDivider;
+extern Model *modelVoltageControlledSwitch;
+extern Model *modelVoltageInverter;
+extern Model *modelVoltageScaler;
+#undef modelArpeggiator
+#undef modelBusRoute
+#undef modelComparator
+#undef modelFade
+#undef modelMixer
+#undef modelMult
+
 // dBiz
 #define DarkDefaultItem dBizDarkDefaultItem
 #define OrangeLight dBizOrangeLight
@@ -814,6 +962,7 @@ Plugin* pluginInstance__BogaudioModules;
 Plugin* pluginInstance__CatroModulo;
 Plugin* pluginInstance__cf;
 Plugin* pluginInstance__ChowDSP;
+extern Plugin* pluginInstance__CountModula;
 Plugin* pluginInstance__dBiz;
 extern Plugin* pluginInstance__DrumKit;
 Plugin* pluginInstance__ESeries;
@@ -1772,6 +1921,163 @@ static void initStatic__ChowDSP()
         p->addModel(modelChowTapeDegrade);
         p->addModel(modelChowTapeLoss);
         p->addModel(modelChowChorus);
+    }
+}
+
+static void initStatic__CountModula()
+{
+    Plugin* const p = new Plugin;
+    pluginInstance__CountModula = p;
+
+    const StaticPluginLoader spl(p, "CountModula");
+    if (spl.ok())
+    {
+        #define modelArpeggiator modelCountModulaArpeggiator
+        #define modelBusRoute modelCountModulaBusRoute
+        #define modelComparator modelCountModulaComparator
+        #define modelFade modelCountModulaFade
+        #define modelMixer modelCountModulaMixer
+        #define modelMult modelCountModulaMult
+
+        p->addModel(modelAnalogueShiftRegister);
+        p->addModel(modelArpeggiator);
+        p->addModel(modelAttenuator);
+        p->addModel(modelAttenuverter);
+        p->addModel(modelBarGraph);
+        p->addModel(modelBasicSequencer8);
+        p->addModel(modelBinaryComparator);
+        p->addModel(modelBinarySequencer);
+        p->addModel(modelBlank12HP);
+        p->addModel(modelBlank16HP);
+        p->addModel(modelBlank20HP);
+        p->addModel(modelBlank24HP);
+        p->addModel(modelBlank2HP);
+        p->addModel(modelBlank4HP);
+        p->addModel(modelBlank8HP);
+        p->addModel(modelBooleanAND);
+        p->addModel(modelBooleanOR);
+        p->addModel(modelBooleanVCNOT);
+        p->addModel(modelBooleanXOR);
+        p->addModel(modelBreakout);
+        p->addModel(modelBurstGenerator);
+        p->addModel(modelBusRoute);
+        p->addModel(modelBusRoute2);
+        p->addModel(modelCarousel);
+        p->addModel(modelChances);
+        p->addModel(modelClockDivider);
+        p->addModel(modelClockedRandomGateExpanderCV);
+        p->addModel(modelClockedRandomGateExpanderLog);
+        p->addModel(modelClockedRandomGates);
+        p->addModel(modelComparator);
+        p->addModel(modelCVSpreader);
+        p->addModel(modelEuclid);
+        p->addModel(modelEuclidExpanderCV);
+        p->addModel(modelEventArranger);
+        p->addModel(modelEventTimer);
+        p->addModel(modelEventTimer2);
+        p->addModel(modelFade);
+        p->addModel(modelFadeExpander);
+        p->addModel(modelG2T);
+        p->addModel(modelGatedComparator);
+        p->addModel(modelGateDelay);
+        p->addModel(modelGateDelayMT);
+        p->addModel(modelGateModifier);
+        p->addModel(modelGateSequencer16);
+        p->addModel(modelGateSequencer8);
+        p->addModel(modelHyperManiacalLFO);
+        p->addModel(modelHyperManiacalLFOExpander);
+        p->addModel(modelLightStrip);
+        p->addModel(modelMangler);
+        p->addModel(modelManifold);
+        p->addModel(modelManualCV);
+        p->addModel(modelManualCV2);
+        p->addModel(modelManualGate);
+        p->addModel(modelMasterReset);
+        p->addModel(modelMatrixCombiner);
+        p->addModel(modelMatrixMixer);
+        p->addModel(modelMegalomaniac);
+        p->addModel(modelMinimusMaximus);
+        p->addModel(modelMixer);
+        p->addModel(modelMorphShaper);
+        p->addModel(modelMult);
+        p->addModel(modelMultiplexer);
+        p->addModel(modelMultiStepSequencer);
+        p->addModel(modelMute);
+        p->addModel(modelMuteIple);
+        p->addModel(modelNibbleTriggerSequencer);
+        p->addModel(modelOctetTriggerSequencer);
+        p->addModel(modelOctetTriggerSequencerCVExpander);
+        p->addModel(modelOctetTriggerSequencerGateExpander);
+        p->addModel(modelOffsetGenerator);
+        p->addModel(modelOscilloscope);
+        p->addModel(modelPalette);
+        p->addModel(modelPolyChances);
+        p->addModel(modelPolyG2T);
+        p->addModel(modelPolyGateModifier);
+        p->addModel(modelPolyLogic);
+        p->addModel(modelPolyMinMax);
+        p->addModel(modelPolyMute);
+        p->addModel(modelPolyrhythmicGenerator);
+        p->addModel(modelPolyrhythmicGeneratorMkII);
+        p->addModel(modelPolyVCPolarizer);
+        p->addModel(modelPolyVCSwitch);
+        p->addModel(modelRackEarLeft);
+        p->addModel(modelRackEarRight);
+        p->addModel(modelRandomAccessSwitch18);
+        p->addModel(modelRandomAccessSwitch81);
+        p->addModel(modelRectifier);
+        p->addModel(modelSampleAndHold);
+        p->addModel(modelSampleAndHold2);
+        p->addModel(modelSequenceEncoder);
+        p->addModel(modelSequencer16);
+        p->addModel(modelSequencer64);
+        p->addModel(modelSequencer8);
+        p->addModel(modelSequencerChannel16);
+        p->addModel(modelSequencerChannel8);
+        p->addModel(modelSequencerExpanderCV8);
+        p->addModel(modelSequencerExpanderLog8);
+        p->addModel(modelSequencerExpanderOut8);
+        p->addModel(modelSequencerExpanderRM8);
+        p->addModel(modelSequencerExpanderTrig8);
+        p->addModel(modelSequencerExpanderTSG);
+        p->addModel(modelSequencerGates16);
+        p->addModel(modelSequencerGates8);
+        p->addModel(modelSequencerTriggers16);
+        p->addModel(modelSequencerTriggers8);
+        p->addModel(modelShepardGenerator);
+        p->addModel(modelSingleDFlipFlop);
+        p->addModel(modelSingleSRFlipFlop);
+        p->addModel(modelSingleTFlipFlop);
+        p->addModel(modelSlopeDetector);
+        p->addModel(modelSRFlipFlop);
+        p->addModel(modelStartupDelay);
+        p->addModel(modelStepSequencer8);
+        p->addModel(modelSubHarmonicGenerator);
+        p->addModel(modelSwitch16To1);
+        p->addModel(modelSwitch1To16);
+        p->addModel(modelSwitch1To8);
+        p->addModel(modelSwitch2);
+        p->addModel(modelSwitch3);
+        p->addModel(modelSwitch4);
+        p->addModel(modelSwitch8To1);
+        p->addModel(modelTFlipFlop);
+        p->addModel(modelTriggerSequencer16);
+        p->addModel(modelTriggerSequencer8);
+        p->addModel(modelVCFrequencyDivider);
+        p->addModel(modelVCFrequencyDividerMkII);
+        p->addModel(modelVCPolarizer);
+        p->addModel(modelVCPulseDivider);
+        p->addModel(modelVoltageControlledSwitch);
+        p->addModel(modelVoltageInverter);
+        p->addModel(modelVoltageScaler);
+
+        #undef modelArpeggiator
+        #undef modelBusRoute
+        #undef modelComparator
+        #undef modelFade
+        #undef modelMixer
+        #undef modelMult
+
     }
 }
 
@@ -3074,6 +3380,7 @@ void initStaticPlugins()
     initStatic__CatroModulo();
     initStatic__cf();
     initStatic__ChowDSP();
+    initStatic__CountModula();
     initStatic__dBiz();
     initStatic__DrumKit();
     initStatic__ESeries();
