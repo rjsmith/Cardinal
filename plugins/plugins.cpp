@@ -100,11 +100,6 @@ extern Model* modelBlank;
 #undef LedLight
 #undef YellowRedLight
 
-// Atelier
-#define modelPalette modelAtelierPalette
-#include "Atelier/src/plugin.hpp"
-#undef modelPalette
-
 // AudibleInstruments
 #include "AudibleInstruments/src/plugin.hpp"
 
@@ -957,7 +952,6 @@ Plugin* pluginInstance__ArableInstruments;
 Plugin* pluginInstance__AnimatedCircuits;
 Plugin* pluginInstance__Aria;
 Plugin* pluginInstance__AS;
-Plugin* pluginInstance__Atelier;
 Plugin* pluginInstance__AudibleInstruments;
 extern Plugin* pluginInstance__Autinn;
 Plugin* pluginInstance__Axioma;
@@ -1484,21 +1478,6 @@ static void initStatic__AS()
 #undef modelVCA
 #undef modelWaveShaper
     }
-}
-
-static void initStatic__Atelier()
-{
-    Plugin* const p = new Plugin;
-    pluginInstance__Atelier = p;
-
-    const StaticPluginLoader spl(p, "Atelier");
-    if (spl.ok())
-    {
-        #define modelPalette modelAtelierPalette
-        p->addModel(modelPalette);
-        #undef modelPalette
-    }
-
 }
 
 static void initStatic__AudibleInstruments()
@@ -3391,7 +3370,6 @@ void initStaticPlugins()
     initStatic__ArableInstruments();
     initStatic__Aria();
     initStatic__AS();
-    initStatic__Atelier();
     initStatic__AudibleInstruments();
     initStatic__Autinn();
     initStatic__Axioma();

@@ -552,20 +552,6 @@ MINIPLUGIN_FILES += AudibleInstruments/eurorack/stmlib/dsp/units.cc
 MINIPLUGIN_FILES += AudibleInstruments/eurorack/stmlib/utils/random.cc
 
 # --------------------------------------------------------------
-# Atelier
-PLUGIN_FILES += $(filter-out Atelier/src/plugin.cpp,$(wildcard Atelier/src/*.cpp))
-PLUGIN_FILES += Atelier/eurorack/stmlib/utils/random.cc
-PLUGIN_FILES += Atelier/eurorack/stmlib/dsp/atan.cc
-PLUGIN_FILES += Atelier/eurorack/stmlib/dsp/units.cc
-
-PLUGIN_FILES += $(wildcard Atelier/eurorack/plaits/dsp/*.cc)
-PLUGIN_FILES += $(wildcard Atelier/eurorack/plaits/dsp/engine/*.cc)
-PLUGIN_FILES += $(wildcard Atelier/eurorack/plaits/dsp/speech/*.cc)
-PLUGIN_FILES += $(wildcard Atelier/eurorack/plaits/dsp/physical_modelling/*.cc)
-PLUGIN_FILES += Atelier/eurorack/plaits/resources.cc
-
-ATELIER_CUSTOM = Palette
-# --------------------------------------------------------------
 # Autinn
 
 PLUGIN_FILES += $(wildcard Autinn/src/*.cpp)
@@ -2277,15 +2263,6 @@ $(BUILD_DIR)/AS/%.cpp.o: AS/%.cpp
 		$(foreach m,$(AS_CUSTOM_PER_FILE),$(call custom_per_file_names,$(m),AS_$(shell basename $*))) \
 		-DpluginInstance=pluginInstance__AS \
 		-Wno-unused-private-field
-
-$(BUILD_DIR)/Atelier/%.o: Atelier/%
-	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"
-	@echo "Compiling $<"
-	$(SILENT)$(CXX) $< $(BUILD_CXX_FLAGS) -c -o $@ \
-		$(foreach m,$(ATELIER_CUSTOM),$(call custom_module_names,$(m),Atelier)) \
-		-DpluginInstance=pluginInstance__Atelier \
-		-IAtelier/eurorack \
-        -DTEST
 
 $(BUILD_DIR)/AudibleInstruments/%.o: AudibleInstruments/%
 	-@mkdir -p "$(shell dirname $(BUILD_DIR)/$<)"

@@ -233,6 +233,3 @@
 [submodule "plugins/CountModula"]
 	path = plugins/CountModula
 	url = https://github.com/countmodula/VCVRackPlugins.git
-[submodule "plugins/Atelier"]
-	path = plugins/Atelier
-	url = https://github.com/Xenakios/Atelier.git
